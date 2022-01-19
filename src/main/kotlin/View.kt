@@ -48,6 +48,7 @@ fun Route.makeView() {
                                 img(src = Tiles.from(i.tile).toImageLocation())
                                 img(src = Tiles.from(i.tile).toImageLocation())
                                 img(src = back)
+                                +" "
                             }
                             +" "
                         }
@@ -57,6 +58,7 @@ fun Route.makeView() {
                                 for (t in i.toTiles()) {
                                     img(src = t.toImageLocation())
                                 }
+                                +" "
                             }
                             +" "
                         }

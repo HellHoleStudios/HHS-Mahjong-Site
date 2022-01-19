@@ -21,6 +21,8 @@ fun Route.makeCredit() {
                 a("https://ktor.io/"){+"Ktor"}
                 br{}
                 a("https://blog.hellholestudios.top/"){+"HellHoleStudios"}
+                br{}
+                a("https://github.com/HellHoleStudios/HHS-Mahjong-Site"){+"Source Code"}
             }
         }
     }

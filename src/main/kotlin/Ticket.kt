@@ -7,6 +7,7 @@ import top.hellholestudios.xgn.jmj.*
 import top.hellholestudios.xgn.jmj.scoring.AgariInfo
 import top.hellholestudios.xgn.jmj.scoring.classic.DefaultRuleset
 import top.hellholestudios.xgn.jmj.util.HandUtil
+import java.math.BigInteger
 import java.util.*
 
 fun Route.makeTicket() {
@@ -23,7 +24,7 @@ fun Route.makeTicket() {
             val source = form["source"].toString()
             val riichi = form["riichi"].toString()
 
-            val req = Request(hd, fuuro, dora, source, riichi, ippatsu, pw, sw,)
+            val req = Request(hd, fuuro, dora, source, riichi, ippatsu, pw, sw)
             val id = addRequest(req)
 
             try {
@@ -102,7 +103,7 @@ fun Route.makeTicket() {
                 //validate hand
                 try {
                     req.validateResult = HandValidator.validate(hand, lastTile, ankan, fuuros, false)
-                }catch(e: Exception){
+                } catch (e: Exception) {
                     //validation failed
                 }
 
@@ -123,14 +124,26 @@ fun Route.makeTicket() {
                     req.respondText += "胡了情况：\n"
                     req.respondText += "${desc.han}翻${desc.fu}符\n"
                     req.respondText += "得点：${ruleset.score(desc, agariInfo)}\n"
+
+                    //calculate aotenjou scoring
+                    if(desc.han<=1000) {
+                        val H = BigInteger.valueOf(100)
+                        var bg = BigInteger("2").pow((desc.han + 2).toInt())
+                        bg = bg * BigInteger.valueOf(desc.fu.toLong()) * BigInteger.valueOf(if (agariInfo.isDealer) 6 else 4)
+                        if (bg % H != BigInteger.ZERO) {
+                            bg = (bg / H + BigInteger.ONE) * H
+                        }
+                        req.respondText+="得点（青天井）：$bg\n"
+                    }
+
                     for (i in desc.yakumans + desc.yakus) {
                         req.respondText += "${ruleset.yakus[i.key]!!.displayName} ${i.value}翻\n"
                     }
 
                     val breakdown = HandUtil.breakdown(fullHand.toCountArray())
                     req.respondText += "手牌拆解：\n"
-                    for(i in breakdown){
-                        req.respondText+="${Arrays.toString(i.mentsus)}+${i.head}\n"
+                    for (i in breakdown) {
+                        req.respondText += "${Arrays.toString(i.mentsus)}+${i.head}\n"
                     }
                 }
 

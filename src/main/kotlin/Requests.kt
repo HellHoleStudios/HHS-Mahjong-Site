@@ -3,6 +3,7 @@ import top.hellholestudios.xgn.jmj.Tile
 import top.hellholestudios.xgn.jmj.ValidatorResult
 import top.hellholestudios.xgn.jmj.Wind
 import top.hellholestudios.xgn.jmj.scoring.AgariInfo
+import java.math.BigInteger
 import java.util.*
 
 data class Request(

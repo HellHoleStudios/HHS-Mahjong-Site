@@ -7,3 +7,5 @@ Please enjoy :)
 
 # Links
 [JMahjong](https://github.com/XiaoGeNintendo/JMahjong)
+
+[Image](https://majandofu.com/mahjong-images)
