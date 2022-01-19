@@ -35,7 +35,7 @@
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.10" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.10" level="project" />
-    <orderEntry type="library" name="Maven: top.hellholestudios.xgn:jmahjong:v1.3.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: top.hellholestudios.xgn:jmahjong:v1.3.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: io.ktor:ktor-server-core:1.6.7" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.5.2-native-mt" level="project" />

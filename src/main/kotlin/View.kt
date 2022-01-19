@@ -45,8 +45,18 @@ fun Route.makeView() {
                             +"暗杠"
                             for (i in req.gAnkans!!) {
                                 img(src = back)
-                                img(src = Tiles.from(i.tile).toImageLocation())
-                                img(src = Tiles.from(i.tile).toImageLocation())
+                                print(i.redDora)
+                                if (i.redDora.count { it } >= 1) {
+                                    img(src = Tiles.from(i.tile).toImageLocation(red = true))
+                                } else {
+                                    img(src = Tiles.from(i.tile).toImageLocation())
+                                }
+
+                                if (i.redDora.count { it } >= 2) {
+                                    img(src = Tiles.from(i.tile).toImageLocation(red = true))
+                                } else {
+                                    img(src = Tiles.from(i.tile).toImageLocation())
+                                }
                                 img(src = back)
                                 +" "
                             }
