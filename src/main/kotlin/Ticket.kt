@@ -85,8 +85,23 @@ fun Route.makeTicket() {
                 val ruleset = DefaultRuleset()
 
                 //check shanten
+                //prepare other tile count
+                val otherTiles=IntArray(Tiles.values().size)
+                for(i in ankan){
+                    otherTiles[i.tile]+=4
+                }
+                for(i in fuuros){
+                    for(t in i.toTiles()){
+                        otherTiles[t.id]++
+                    }
+                }
+                for(i in doras){
+                    otherTiles[i]++
+                }
+
+                print(otherTiles.contentToString())
                 val shanten = ShantenCalculator.getShanten(fullHand.toCountArray(), ruleset)
-                val suggest = ShantenCalculator.suggest(fullHand.toCountArray(), ruleset)
+                val suggest = ShantenCalculator.suggest(fullHand.toCountArray(), ruleset, otherTiles)
 
                 req.respondText = when (shanten) {
                     -1 -> {
